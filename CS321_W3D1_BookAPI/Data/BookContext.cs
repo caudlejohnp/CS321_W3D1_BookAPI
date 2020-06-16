@@ -9,7 +9,7 @@ namespace CS321_W3D1_BookAPI.Data
 {
     public class BookContext : DbContext
     {
-        DbSet<Book> Books { get; set; }
+        public DbSet<Book> Books { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder myBuilder)
         {
@@ -21,9 +21,9 @@ namespace CS321_W3D1_BookAPI.Data
             base.OnModelCreating(myModelBuilder);
 
             myModelBuilder.Entity<Book>().HasData(
-                new Book { Title = "The Hobbit", Author = "J.R.R. Tolkein", Category = "Fantasy" },
-                new Book { Title = "The Fellowship of the Ring", Author = "J.R.R. Tolkein", Category = "Fantasy" },
-                new Book { Title = "The Two Towers", Author = "J.R.R. Tolkein", Category = "Fantasy" });
+                new Book { Id = 1, Title = "The Hobbit", Author = "J.R.R. Tolkein", Category = "Fantasy" },
+                new Book { Id = 2, Title = "The Fellowship of the Ring", Author = "J.R.R. Tolkein", Category = "Fantasy" },
+                new Book { Id = 3, Title = "The Two Towers", Author = "J.R.R. Tolkein", Category = "Fantasy" });
         }
 
     }
