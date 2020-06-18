@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using CS321_W3D1_BookAPI.Controllers;
 
 namespace CS321_W3D1_BookAPI.Models
 {
-    public class Book
+    public class Author
     {
         public int Id { get; set; }
 
         [Required]
-        public string Title { get; set; }
+        public string FirstName { get; set; }
 
         [Required]
-        public int AuthorId { get; set; }
+        public string LastName { get; set; }
 
         [Required]
-        public string Category { get; set; }
-
-        public Author Author { get; set; }
+        public DateTime Birthday { get; set; }
+        public List<Book> Books { get; set; }
     }
 }
