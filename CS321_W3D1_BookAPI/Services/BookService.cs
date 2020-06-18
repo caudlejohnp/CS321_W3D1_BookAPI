@@ -10,48 +10,48 @@ namespace CS321_W3D1_BookAPI.Services
 {
     public class BookService : IBookService
     {
-        private readonly BookContext _bookContext;
+        private readonly AppDbContext _appDbContext;
 
-        public BookService(BookContext myContext)
+        public BookService(AppDbContext myContext)
         {
-            _bookContext = myContext;
+            _appDbContext = myContext;
         }
         public Book Add(Book newBook)
         {
-            _bookContext.Books.Add(newBook);
-            _bookContext.SaveChanges();
+            _appDbContext.Books.Add(newBook);
+            _appDbContext.SaveChanges();
             return newBook;
         }
 
         public void Delete(Book book)
         {
             //Make sure book exists
-            var currentBook = _bookContext.Books.FirstOrDefault(b => b.Id == book.Id);
+            var currentBook = _appDbContext.Books.FirstOrDefault(b => b.Id == book.Id);
             if (currentBook != null)
             {
-                _bookContext.Books.Remove(book);
-                _bookContext.SaveChanges();
+                _appDbContext.Books.Remove(book);
+                _appDbContext.SaveChanges();
             }
         }
 
         public Book Get(int id)
         {
-            return _bookContext.Books.FirstOrDefault(b => b.Id == id);
+            return _appDbContext.Books.FirstOrDefault(b => b.Id == id);
         }
 
         public IEnumerable<Book> GetAll()
         {
-            return _bookContext.Books;
+            return _appDbContext.Books;
         }
 
         public Book Update(Book updatedBook)
         {
-            var currentBook = _bookContext.Books.FirstOrDefault(b => b.Id == updatedBook.Id);
+            var currentBook = _appDbContext.Books.FirstOrDefault(b => b.Id == updatedBook.Id);
             if (currentBook != null)
             {
-                _bookContext.Entry<Book>(currentBook).CurrentValues.SetValues(updatedBook);
-                _bookContext.Books.Update(updatedBook);
-                _bookContext.SaveChanges();
+                _appDbContext.Entry<Book>(currentBook).CurrentValues.SetValues(updatedBook);
+                _appDbContext.Books.Update(updatedBook);
+                _appDbContext.SaveChanges();
                 return currentBook;
             }
             return null;

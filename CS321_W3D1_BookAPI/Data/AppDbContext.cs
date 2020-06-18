@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CS321_W3D1_BookAPI.Data
 {
-    public class BookContext : DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
 
