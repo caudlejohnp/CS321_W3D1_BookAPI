@@ -36,12 +36,12 @@ namespace CS321_W3D1_BookAPI.Services
 
         public Book Get(int id)
         {
-            return _appDbContext.Books.FirstOrDefault(b => b.Id == id);
+            return _appDbContext.Books.Include(b => b.Author).FirstOrDefault(b => b.Id == id);
         }
 
         public IEnumerable<Book> GetAll()
         {
-            return _appDbContext.Books;
+            return _appDbContext.Books.Include(b => b.Author);
         }
 
         public Book Update(Book updatedBook)
