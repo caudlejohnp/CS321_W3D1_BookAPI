@@ -44,6 +44,23 @@ namespace CS321_W3D1_BookAPI.Services
             return _appDbContext.Books.Include(b => b.Author);
         }
 
+        public IEnumerable<Book> GetBooksForAuthor(int authorId)
+        {
+            return _appDbContext.Books.Include(p => p.Author)
+                .Include(p => p.Publisher)
+                .Where(p => p.AuthorId == authorId)
+                .ToList();
+                
+        }
+
+        public IEnumerable<Book> GetBooksForPublisher(int publisherId)
+        {
+            return _appDbContext.Books.Include(p => p.Publisher)
+                .Include(p => p.Author)
+                .Where(p => p.PublisherId == publisherId)
+                .ToList();
+        }
+
         public Book Update(Book updatedBook)
         {
             var currentBook = _appDbContext.Books.FirstOrDefault(b => b.Id == updatedBook.Id);

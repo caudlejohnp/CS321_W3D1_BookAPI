@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CS321_W3D1_BookAPI.Models
+namespace CS321_W3D1_BookAPI.APIModels
 {
-    public class Book
+    public class BookModel
     {
         public int Id { get; set; }
 
@@ -16,9 +15,9 @@ namespace CS321_W3D1_BookAPI.Models
 
         public string Category { get; set; }
 
-        public Author Author { get; set; }
+        public string Author { get; set; }
 
-        public Publisher Publisher { get; set; }
+        public string Publisher { get; set; }
 
         public int PublisherId { get; set; }
     }
